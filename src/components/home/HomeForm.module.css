@@ -1,0 +1,31 @@
+/* ---------------------------------------- */
+.body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: #222; */
+  background: linear-gradient(65deg, #97a4f0 30%, #280064 90%)
+}
+
+.card {
+  height: 340px;
+  width: 450px;
+  display: flex;
+  position: relative;
+  background: linear-gradient(#f8da61, #ff5acd);
+  border-radius: 5%;
+  
+}
+
+h5,
+h4 {
+  font-family: serif;
+  color:#222;
+  font-size:larger;
+}
+.but {
+  font-family:  sans-serif;
+  color: ghostwhite;
+
+}
