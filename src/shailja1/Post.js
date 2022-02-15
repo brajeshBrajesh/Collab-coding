@@ -59,7 +59,7 @@ export default function RecipeReviewCard() {
         <CardMedia
           component="img"
           height="194"
-          image="C:\Collab-coding\public\logo512.png"
+          image=""
           alt="Coding problem"
         />
         What if, instead of being able to climb 1 or 2 steps at a time, you
