@@ -97,7 +97,16 @@ function CreatePost(props) {
         <label htmlFor="title" className="form-label fw-bold">
           Enter title
         </label>
-        <input type="text" id="title" ref={title} />
+        <br />
+
+        <input
+          type="text"
+          id="title"
+          ref={title}
+          placeholder="write here your post title"
+        />
+        <br />
+        <br />
         <br />
         <label
           htmlFor="exampleFormControlTextarea1"
