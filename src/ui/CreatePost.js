@@ -2,8 +2,7 @@ import React, { useRef, useState } from "react";
 import app from "../firebase/Firebase";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import "./CreatePost.css";
-
+import "./CreatePost.module.css";
 import { push, getDatabase, set, ref as tempRef } from "firebase/database";
 import imgUploadHandlerAndSaveInDatabase from "./functions/imgUploadHandlerAndSaveInDatabase.js";
 import saveToDatabase from "./functions/saveToDatabase";
@@ -17,7 +16,7 @@ function CreatePost(props) {
   const userDetails = useSelector((state) => state);
 
   const desc = useRef();
-  const title=useRef();
+
   const navigate = useNavigate();
 
   //Database
@@ -35,7 +34,7 @@ function CreatePost(props) {
       let select = e.target.files[0];
       setimgurl(URL.createObjectURL(select));
     }
-    // console.log(e.target.files[0]);
+    console.log(e.target.files[0]);
   };
 
   const postHandler = () => {
@@ -50,7 +49,7 @@ function CreatePost(props) {
       if (
         fileExtension === "jpeg" ||
         fileExtension === "jpg" ||
-        // fileExtension === "pdf" ||
+        fileExtension === "pdf" ||
         fileExtension === "png" ||
         fileExtension === "gif"
       ) {
@@ -60,9 +59,7 @@ function CreatePost(props) {
           fileExtension,
           userDetails,
           file,
-          title.current.value,
           desc.current.value,
-
           setProgress,
           setFileUrl
         );
@@ -72,9 +69,7 @@ function CreatePost(props) {
         navigate,
         newPostRef,
         userDetails,
-        title.current.value,
         desc.current.value,
-
         "",
         ""
       );
@@ -82,10 +77,11 @@ function CreatePost(props) {
     // console.log(file);
   };
   return (
-    <div className="container">
+    <div
+      className="container con"
+      style={{ border: "2px solid grey", padding: "5px" }}
+    >
       <div className="mb-3">
-        <label htmlFor="title" className="form-label fw-bold">Enter title</label>
-        <input type="text" id="title" ref={title}/><br/>
         <label
           htmlFor="exampleFormControlTextarea1"
           className="form-label fw-bold"
@@ -98,10 +94,7 @@ function CreatePost(props) {
           rows="3"
           ref={desc}
           style={{ resize: "none" }}
-<<<<<<< Updated upstream
-=======
           placeholder="Write your post here"
->>>>>>> Stashed changes
         ></textarea>
         <div>
           <div className="progress my-2">
@@ -131,20 +124,25 @@ function CreatePost(props) {
           <br />
 
           <br />
-        
+          {/* <img src={fileUrl} alt="firebase-image" /> */}
+          {/* <img
+            src={fileUrl || "http://via.placeholder.com/300"}
+            alt="firebase-image"
+          /> */}
         </div>
       </div>
-      <div className="text-center">
+      <div className="text-center mx-2">
         <button
           type="button"
-          className="btn btn-primary mx-2"
+          variant="outline-success"
+          className="btn btn-success"
           onClick={postHandler}
         >
           Post
         </button>
         <button
           type="button"
-          className="btn btn-secondary "
+          className="btn btn-secondary mx-2"
           onClick={cancelHandler}
         >
           Cancel
