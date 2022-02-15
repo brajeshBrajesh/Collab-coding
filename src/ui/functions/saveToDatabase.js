@@ -11,6 +11,7 @@ function saveToDatabase(
   navigate,
   newPostRef,
   userDetails,
+  title,
   desc,
   downloadURL,
   filePath
@@ -22,10 +23,11 @@ function saveToDatabase(
       userId: userDetails.login.loginId,
     },
     time: new Date().getTime(),
-    likes: ["junk"],
-    dislikes: ["junk"],
+    likes: 0,
+    dislikes: 0,
     comment: ["junk"],
     content: {
+      title: title,
       desc: desc,
       img_URL: downloadURL,
       img_path: filePath,

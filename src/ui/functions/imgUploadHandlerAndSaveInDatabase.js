@@ -14,6 +14,7 @@ function imgUploadHandlerAndSaveInDatabase(
   fileExtension,
   userDetails,
   file,
+  title,
   desc,
   setProgress,
   setFileUrl
@@ -40,6 +41,7 @@ function imgUploadHandlerAndSaveInDatabase(
           navigate,
           newPostRef,
           userDetails,
+          title,
           desc,
           downloadURL,
           filePath

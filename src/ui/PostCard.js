@@ -10,6 +10,8 @@ function PostCard(props) {
           <button>Delete</button>
         </div>
       )}
+      {/* <h2>{props.details.title}</h2> */}
+      <h1>{props.details.content.title}</h1>
       <p>{props.details.time}</p>
       <p>{props.details.content.desc}</p>
       {props.details.content.img_URL !== "" && (

@@ -17,7 +17,7 @@ function CreatePost(props) {
   const userDetails = useSelector((state) => state);
 
   const desc = useRef();
-
+  const title=useRef();
   const navigate = useNavigate();
 
   //Database
@@ -37,7 +37,7 @@ function CreatePost(props) {
       let select = e.target.files[0];
       setimgurl(URL.createObjectURL(select));
     }
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
   };
 
   const postHandler = () => {
@@ -52,7 +52,7 @@ function CreatePost(props) {
       if (
         fileExtension === "jpeg" ||
         fileExtension === "jpg" ||
-        fileExtension === "pdf" ||
+        // fileExtension === "pdf" ||
         fileExtension === "png" ||
         fileExtension === "gif"
       ) {
@@ -62,7 +62,9 @@ function CreatePost(props) {
           fileExtension,
           userDetails,
           file,
+          title.current.value,
           desc.current.value,
+
           setProgress,
           setFileUrl
         );
@@ -72,7 +74,9 @@ function CreatePost(props) {
         navigate,
         newPostRef,
         userDetails,
+        title.current.value,
         desc.current.value,
+
         "",
         ""
       );
@@ -85,6 +89,8 @@ function CreatePost(props) {
       style={{ border: "2px solid red", padding: "5px" }}
     >
       <div className="mb-3">
+        <label htmlFor="title" className="form-label fw-bold">Enter title</label>
+        <input type="text" id="title" ref={title}/><br/>
         <label
           htmlFor="exampleFormControlTextarea1"
           className="form-label fw-bold"
@@ -96,7 +102,7 @@ function CreatePost(props) {
           id="exampleFormControlTextarea1"
           rows="3"
           ref={desc}
-          style={{resize:"none"}}
+          style={{ resize: "none" }}
         ></textarea>
         <div>
           <div className="progress my-2">
@@ -122,18 +128,11 @@ function CreatePost(props) {
               onChange={fileChangeHandler}
             />
           </div>
-          <div>
-
-          { imgurl && <img src={imgurl}/>  }
-          </div>
+          <div>{imgurl && <img src={imgurl} />}</div>
           <br />
 
           <br />
-          {/* <img src={fileUrl} alt="firebase-image" /> */}
-          {/* <img
-            src={fileUrl || "http://via.placeholder.com/300"}
-            alt="firebase-image"
-          /> */}
+        
         </div>
       </div>
       <div className="text-center">
