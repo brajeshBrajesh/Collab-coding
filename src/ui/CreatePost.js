@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import app from "../firebase/Firebase";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import "./CreatePost.css";
 
 import { push, getDatabase, set, ref as tempRef } from "firebase/database";
 import imgUploadHandlerAndSaveInDatabase from "./functions/imgUploadHandlerAndSaveInDatabase.js";
@@ -11,8 +12,7 @@ function CreatePost(props) {
   const [file, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
   const [fileUrl, setFileUrl] = useState("");
-  const [imgurl,setimgurl] = useState(null);
-
+  const [imgurl, setimgurl] = useState(null);
 
   const userDetails = useSelector((state) => state);
 
@@ -24,8 +24,6 @@ function CreatePost(props) {
   const db = getDatabase();
   const postListRef = tempRef(db, "posts");
   const newPostRef = push(postListRef);
-
-
 
   const cancelHandler = () => {
     props.createPostCancel();
@@ -84,10 +82,7 @@ function CreatePost(props) {
     // console.log(file);
   };
   return (
-    <div
-      className="container"
-      style={{ border: "2px solid red", padding: "5px" }}
-    >
+    <div className="container">
       <div className="mb-3">
         <label htmlFor="title" className="form-label fw-bold">Enter title</label>
         <input type="text" id="title" ref={title}/><br/>
@@ -103,6 +98,10 @@ function CreatePost(props) {
           rows="3"
           ref={desc}
           style={{ resize: "none" }}
+<<<<<<< Updated upstream
+=======
+          placeholder="Write your post here"
+>>>>>>> Stashed changes
         ></textarea>
         <div>
           <div className="progress my-2">
@@ -136,12 +135,16 @@ function CreatePost(props) {
         </div>
       </div>
       <div className="text-center">
-        <button type="button" className="btn btn-primary" onClick={postHandler}>
+        <button
+          type="button"
+          className="btn btn-primary mx-2"
+          onClick={postHandler}
+        >
           Post
         </button>
         <button
           type="button"
-          className="btn btn-secondary"
+          className="btn btn-secondary "
           onClick={cancelHandler}
         >
           Cancel
@@ -151,6 +154,4 @@ function CreatePost(props) {
   );
 }
 
-
 export default CreatePost;
-

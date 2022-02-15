@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate replace to="/login" />} />
 
-        <Route element={<PrivateRoutes/>}>
+        <Route element={<PrivateRoutes />}>
           <Route path="/home" element={<Home />} />
         </Route>
         <Route path="/login" element={<Login />} />

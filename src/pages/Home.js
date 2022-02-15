@@ -9,7 +9,7 @@ import HomeForm from "../components/home/HomeForm";
 import MainHome from "../components/home/MainHome";
 import { useDispatch } from "react-redux";
 import { loginActions } from "../redux/Auth";
-import {postActions} from "../redux/Post";
+import { postActions } from "../redux/Post";
 
 function Home() {
   const db = getDatabase();
