@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import app from "../firebase/Firebase";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import styles from "./CreatePost.module.css";
+// import styles from "./CreatePost.module.css";
 
 import { push, getDatabase, set, ref as tempRef } from "firebase/database";
 import imgUploadHandlerAndSaveInDatabase from "./functions/imgUploadHandlerAndSaveInDatabase.js";
@@ -44,7 +44,7 @@ function CreatePost(props) {
       alert("Title cannot be empty");
       return;
     }
-    if (desc.current.value.trim().length === 0 && file === null) {
+    if (desc.current.value.trim().length == 0 && file === null) {
       alert("Nothing to post");
       return;
     }
@@ -124,17 +124,19 @@ function CreatePost(props) {
               onChange={fileChangeHandler}
             />
           </div>
-          <div className="progress my-2">
-            <div
-              className="progress-bar progress-bar-striped"
-              role="progressbar"
-              style={{ width: progress + "%" }}
-              aria-valuenow="10"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
-          {postClicked && <p>Uploading!Please wait.........</p>}
+          {postClicked && (
+            <div className="progress my-2">
+              <div
+                className="progress-bar progress-bar-striped"
+                role="progressbar"
+                style={{ width: progress + "%" }}
+                aria-valuenow="10"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          )}
+          {postClicked && <p>Uploading.....Please wait</p>}
           <div>{imgurl && <img src={imgurl} />}</div>
           <br />
 
@@ -150,12 +152,10 @@ function CreatePost(props) {
         >
           Post
         </button>
-        
         <button
           type="button"
           className="btn btn-secondary "
           onClick={cancelHandler}
-          
         >
           Cancel
         </button>
