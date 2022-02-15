@@ -16,6 +16,7 @@ import {
   orderByKey,
 } from "firebase/database";
 
+
 const postFetch = (
   limit,
   setHasMore,
@@ -29,14 +30,14 @@ const postFetch = (
 
   const dbRef = query(ref(db, "posts/"), limitToLast(limit));
 
-  let data = null;
+  
   get(dbRef)
     .then((snapshot) => {
       if (snapshot.exists()) {
         // data = snapshot.val();
         let temp = [];
 
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
         for (const key in snapshot.val()) {
           //   temp.push(snapshot.val()[t]);
           // console.log(snapshot.val()[t]);

@@ -22,7 +22,7 @@ function saveToDatabase(
       userName: userDetails.login.userName,
       userId: userDetails.login.loginId,
     },
-    time: new Date().getTime(),
+    time: new Date().toLocaleString(),
     likes: 0,
     dislikes: 0,
     comment: ["junk"],

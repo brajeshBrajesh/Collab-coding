@@ -19,34 +19,7 @@ const Signup = (props) => {
                   <header>
                     <b>Welcome-Login In To Continue</b>
                   </header>
-                  {/* <div className="form-group py-2 ">
-                    <input
-                      className="myInput"
-                      type="text"
-                      placeholder="Username"
-                      id="username"
-                      required
-                    />
-                  </div>
-
-                  <div className="form-group py-2 ">
-                    <input
-                      className="myInput"
-                      placeholder="Email"
-                      type="text"
-                      id="email"
-                      required
-                    />
-                  </div>
-                  <div className="form-group py-2 ">
-                    <input
-                      className="myInput"
-                      placeholder="Password"
-                      type="password"
-                      id="password"
-                      required
-                    />
-                  </div> */}
+                  
 
                   <button type="submit" className="btn btn-primary">
                     Login With Google

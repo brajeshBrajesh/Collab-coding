@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import app from "../firebase/Firebase";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import "./CreatePost.css";
+import styles from "./CreatePost.module.css";
 
 import { push, getDatabase, set, ref as tempRef } from "firebase/database";
 import imgUploadHandlerAndSaveInDatabase from "./functions/imgUploadHandlerAndSaveInDatabase.js";
@@ -13,11 +13,12 @@ function CreatePost(props) {
   const [progress, setProgress] = useState(0);
   const [fileUrl, setFileUrl] = useState("");
   const [imgurl, setimgurl] = useState(null);
+  const [postClicked, setPostClicked] = useState(false);
 
   const userDetails = useSelector((state) => state);
 
   const desc = useRef();
-  const title=useRef();
+  const title = useRef();
   const navigate = useNavigate();
 
   //Database
@@ -39,11 +40,16 @@ function CreatePost(props) {
   };
 
   const postHandler = () => {
-    if (desc.current.value.trim().length == 0 && file === null) {
+    if (title.current.value.trim().length === 0) {
+      alert("Title cannot be empty");
+      return;
+    }
+    if (desc.current.value.trim().length === 0 && file === null) {
       alert("Nothing to post");
       return;
     }
     if (file !== null) {
+      setPostClicked(true);
       const fileExtension = file.type.substring(file.type.lastIndexOf("/") + 1);
       console.log(fileExtension);
 
@@ -68,6 +74,7 @@ function CreatePost(props) {
         );
       } else alert("Invalid file type");
     } else {
+      setPostClicked(true);
       saveToDatabase(
         navigate,
         newPostRef,
@@ -82,10 +89,13 @@ function CreatePost(props) {
     // console.log(file);
   };
   return (
-    <div className="container">
+    <div className="container" style={{ border: "2px solid black" }}>
       <div className="mb-3">
-        <label htmlFor="title" className="form-label fw-bold">Enter title</label>
-        <input type="text" id="title" ref={title}/><br/>
+        <label htmlFor="title" className="form-label fw-bold">
+          Enter title
+        </label>
+        <input type="text" id="title" ref={title} />
+        <br />
         <label
           htmlFor="exampleFormControlTextarea1"
           className="form-label fw-bold"
@@ -98,22 +108,9 @@ function CreatePost(props) {
           rows="3"
           ref={desc}
           style={{ resize: "none" }}
-<<<<<<< Updated upstream
-=======
           placeholder="Write your post here"
->>>>>>> Stashed changes
         ></textarea>
         <div>
-          <div className="progress my-2">
-            <div
-              className="progress-bar progress-bar-striped"
-              role="progressbar"
-              style={{ width: progress + "%" }}
-              aria-valuenow="10"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
           <br />
           <br />
           <div className="mb-3">
@@ -127,11 +124,21 @@ function CreatePost(props) {
               onChange={fileChangeHandler}
             />
           </div>
+          <div className="progress my-2">
+            <div
+              className="progress-bar progress-bar-striped"
+              role="progressbar"
+              style={{ width: progress + "%" }}
+              aria-valuenow="10"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+          {postClicked && <p>Uploading!Please wait.........</p>}
           <div>{imgurl && <img src={imgurl} />}</div>
           <br />
 
           <br />
-        
         </div>
       </div>
       <div className="text-center">
@@ -139,13 +146,16 @@ function CreatePost(props) {
           type="button"
           className="btn btn-primary mx-2"
           onClick={postHandler}
+          disabled={postClicked}
         >
           Post
         </button>
+        
         <button
           type="button"
           className="btn btn-secondary "
           onClick={cancelHandler}
+          
         >
           Cancel
         </button>
