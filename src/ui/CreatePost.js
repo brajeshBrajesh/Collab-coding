@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import app from "../firebase/Firebase";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-// import styles from "./CreatePost.module.css";
+import "./CreatePost.module.css";
 
 import { push, getDatabase, set, ref as tempRef } from "firebase/database";
 import imgUploadHandlerAndSaveInDatabase from "./functions/imgUploadHandlerAndSaveInDatabase.js";
@@ -89,7 +89,10 @@ function CreatePost(props) {
     // console.log(file);
   };
   return (
-    <div className="container" style={{ border: "2px solid black" }}>
+    <div
+      className="container"
+      style={{ border: "2px solid black", padding: "10px" }}
+    >
       <div className="mb-3">
         <label htmlFor="title" className="form-label fw-bold">
           Enter title
@@ -146,7 +149,7 @@ function CreatePost(props) {
       <div className="text-center">
         <button
           type="button"
-          className="btn btn-primary mx-2"
+          className="btn btn-success mx-2"
           onClick={postHandler}
           disabled={postClicked}
         >
