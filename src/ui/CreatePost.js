@@ -98,7 +98,7 @@ function CreatePost(props) {
         <br />
         <label
           htmlFor="exampleFormControlTextarea1"
-          className="form-label fw-bold"
+          className="form-label fw-bold ld"
         >
           Enter your Post
         </label>

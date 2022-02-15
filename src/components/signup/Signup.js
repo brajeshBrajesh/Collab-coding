@@ -21,7 +21,7 @@ const Signup = (props) => {
                   </header>
                   
 
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" className="btn btn-outline-success">
                     Login With Google
                   </button>
                 </form>
