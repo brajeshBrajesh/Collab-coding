@@ -17,9 +17,8 @@ const Signup = (props) => {
                   onSubmit={formSubmitHandler}
                 >
                   <header>
-                    <b>Welcome-Login In To Continue</b>
+                    <b>Welcome login in to continue</b>
                   </header>
-                  
 
                   <button type="submit" className="btn btn-outline-success">
                     Login With Google
