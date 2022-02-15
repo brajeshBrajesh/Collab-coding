@@ -72,7 +72,10 @@ function CreatePost(props) {
           setProgress,
           setFileUrl
         );
-      } else alert("Invalid file type");
+      } else {
+        alert("Invalid file type");
+        setPostClicked(false);
+      }
     } else {
       setPostClicked(true);
       saveToDatabase(
