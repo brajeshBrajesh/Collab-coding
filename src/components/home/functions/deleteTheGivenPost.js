@@ -31,10 +31,6 @@ const deleteTheGivenPost = (
         set(ref(db, "users/" + postUserId + "/posts"), {
           allPosts: tempPosts,
         });
-
-        //store liked in redux also
-        // To be done
-        //
       } else {
         console.log("Not found snapshot");
       }

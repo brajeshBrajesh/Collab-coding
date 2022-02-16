@@ -4,10 +4,12 @@ import styles from "./PostCard.module.css";
 import { useSelector } from "react-redux";
 import checkIfPostIsLikedByUser from "./functions/checkIfPostIsLikedByUser";
 import updateLikeStatusInDatabase from "./functions/updateLikeStatusInDatabase";
+import Comments from "../components/home/comments/Comments";
 
 function PostCard(props) {
   const [likedByUser, setLikedByUser] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
+  const [showComments, setShowComments] = useState(false);
 
   const userId = useSelector((state) => state.login.loginId); //from redux
   // console.log("renders again");
@@ -29,6 +31,10 @@ function PostCard(props) {
   const likeHandler = () => {
     setLikedByUser(!likedByUser);
     updateLikeStatusInDatabase(userId, props.details.key);
+  };
+
+  const commentsHandler = () => {
+    setShowComments(!showComments);
   };
   return (
     <div
@@ -64,9 +70,11 @@ function PostCard(props) {
         />
       )}
       <div className="cardFooter">
-        <button onClick={likeHandler}>{likedByUser ? "Unlike" : "Like"}</button>{" "}
+        <button onClick={likeHandler}>{likedByUser ? "Unlike" : "Like"}</button>
         {likesCount} <br />
         {/* <button>Dislike</button> 1 */}
+        <button onClick={commentsHandler}>Comments</button>
+        {showComments && <Comments path={`comments/${props.details.key}`} />}
       </div>
     </div>
   );
@@ -75,7 +83,7 @@ function PostCard(props) {
 export default PostCard;
 
 // import * as React from "react";
-// import "./Post.module.css";
+// import "./PostCard.module.css";
 // import { styled } from "@mui/material/styles";
 // import Card from "@mui/material/Card";
 // import CardHeader from "@mui/material/CardHeader";

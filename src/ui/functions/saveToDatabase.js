@@ -28,7 +28,8 @@ function saveToDatabase(
       likedBy: {},
     },
     // dislikes: 0,
-    comment: ["junk"],
+    // comment: ["junk"],
+    comment:{},
     content: {
       title: title,
       desc: desc,

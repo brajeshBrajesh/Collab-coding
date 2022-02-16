@@ -22,12 +22,12 @@ function HomeForm(props) {
         likes: {
           allLikes: ["junk"],
         },
-        dislikes: {
-          allDislikes: ["junk"],
-        },
-        comments: {
-          allComments: ["junk"],
-        },
+        // dislikes: {
+        //   allDislikes: ["junk"],
+        // },
+        // comments: {
+        //   allComments: ["junk"],
+        // },
       });
       dispatch(loginActions.userNameAdder(userName.current.value));
 

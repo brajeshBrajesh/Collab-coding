@@ -6,7 +6,7 @@ const deleteImageFromStorage = (imagePath) => {
   const storageRef = ref(storage,  imagePath );
   deleteObject(storageRef)
     .then(() => {
-      console.log("file deleted successdully");
+      // console.log("file deleted successdully");
     })
     .catch((error) => {
       // Uh-oh, an error occurred!
