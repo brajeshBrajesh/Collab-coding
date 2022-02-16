@@ -40,7 +40,6 @@ export default function RecipeReviewCard() {
   };
 
   return (
-<<<<<<< HEAD:src/shailja1/Post.js
     <Card
       sx={{
         maxWidth: 455,
@@ -57,73 +56,30 @@ export default function RecipeReviewCard() {
     >
       <CardHeader
         avatar={
-          <Avatar
-            sx={{ bgcolor: red[500], border: "1px solid white" }}
-            aria-label="coding"
-          >
-            S
+          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+            R
           </Avatar>
         }
         action={
           <IconButton aria-label="settings">
             <MoreVertIcon />
-=======
-    <div className="container">
-      <Card sx={{ maxWidth: 345 }}>
-        <CardHeader
-          avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              S
-            </Avatar>
-          }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title="DSA Problem"
-          subheader="February 16, 2022"
-        />
-        <CardMedia
-          component="img"
-          height="194"
-          image=""
-          alt="Coding problem"
-        />
-        What if, instead of being able to climb 1 or 2 steps at a time, you
-        could climb any number from a set of positive integers X? For example,
-        if X = {(1, 3, 5)}, you could climb 1, 3, or 5 steps at a time.
-        Generalize your function to take in X
-        <CardContent>
-          <Typography variant="body2" color="text.secondary"></Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="like">
-            <ThumbUpRoundedIcon />
-          </IconButton>
-          <IconButton aria-label="dislike">
-            <ThumbDownAltRoundedIcon />
-          </IconButton>
-          <IconButton aria-label="comment">
-            <QuestionAnswerOutlinedIcon />
->>>>>>> 77ead5e2edf71139c8699038ff990d8e8ad8fde9:src/shailja1/PostCard.js
           </IconButton>
         }
-        title="DSA Problem"
-        subheader="February 16, 2022"
+        title="Shrimp and Chorizo Paella"
+        subheader="September 14, 2016"
       />
       <CardMedia
         component="img"
         height="194"
-        image="C:\Collab-coding\public\logo512.png"
-        alt="Coding problem"
+        image="/static/images/cards/paella.jpg"
+        alt="Paella dish"
       />
-      What if, instead of being able to climb 1 or 2 steps at a time, you could
-      climb any number from a set of positive integers X? For example, if X ={" "}
-      {(1, 3, 5)}, you could climb 1, 3, or 5 steps at a time. Generalize your
-      function to take in X
       <CardContent>
-        <Typography variant="body2" color="text.secondary"></Typography>
+        <Typography variant="body2" color="text.secondary">
+          This impressive paella is a perfect party dish and a fun meal to cook
+          together with your guests. Add 1 cup of frozen peas along with the
+          mussels, if you like.
+        </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="like">
@@ -135,7 +91,6 @@ export default function RecipeReviewCard() {
         <IconButton aria-label="comment">
           <QuestionAnswerOutlinedIcon />
         </IconButton>
-
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
