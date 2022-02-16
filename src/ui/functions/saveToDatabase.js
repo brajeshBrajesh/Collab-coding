@@ -23,8 +23,11 @@ function saveToDatabase(
       userId: userDetails.login.loginId,
     },
     time: new Date().toLocaleString(),
-    likes: 0,
-    dislikes: 0,
+    likes: {
+      likesCount: 0,
+      likedBy: {},
+    },
+    // dislikes: 0,
     comment: ["junk"],
     content: {
       title: title,
@@ -41,7 +44,7 @@ function saveToDatabase(
       get(child(dataRef, `users/${userDetails.login.loginId}/posts/allPosts`))
         .then((snapshot) => {
           if (snapshot.exists()) {
-            console.log("saving to user post");
+            // console.log("saving to user post");
             allPosts = snapshot.val();
             allPosts.push(newPostRef.key);
             // console.log(allPosts);
