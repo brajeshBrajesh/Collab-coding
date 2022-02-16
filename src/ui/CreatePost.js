@@ -14,6 +14,10 @@ function CreatePost(props) {
   const [fileUrl, setFileUrl] = useState("");
   const [imgurl, setimgurl] = useState(null);
   const [postClicked, setPostClicked] = useState(false);
+  const [error, setError] = useState({
+    etitle:"",
+    edesc:""
+  });
 
   const userDetails = useSelector((state) => state);
 
@@ -41,13 +45,26 @@ function CreatePost(props) {
 
   const postHandler = () => {
     if (title.current.value.trim().length === 0) {
-      alert("Title cannot be empty");
+     setError(prev => {
+      return   {...prev,etitle:"Title cannot be empty"}
+     });
+     if (desc.current.value.trim().length == 0) {
+      setError(prev => {
+       return  {...prev,edesc:"Nothing To post"}
+      });
       return;
     }
-    if (desc.current.value.trim().length == 0 && file === null) {
-      alert("Nothing to post");
+    return;
+    }
+    if (desc.current.value.trim().length == 0) {
+      setError(prev => {
+       return  {...prev,edesc:"Nothing To post"}
+      });
       return;
     }
+    
+  
+     
     if (file !== null) {
       setPostClicked(true);
       const fileExtension = file.type.substring(file.type.lastIndexOf("/") + 1);
@@ -88,7 +105,9 @@ function CreatePost(props) {
         "",
         ""
       );
+       
     }
+    
     // console.log(file);
   };
   return (
@@ -107,8 +126,10 @@ function CreatePost(props) {
           id="title"
           ref={title}
           placeholder="write here your post title"
+          onChange={() => {setError(prev => {return {...prev,etitle:""}})}}
         />
         <br />
+        <span style={{color:"red"}}>{error.etitle}</span>
         <br />
         <br />
         <label
@@ -124,7 +145,10 @@ function CreatePost(props) {
           ref={desc}
           style={{ resize: "none" }}
           placeholder="Write your post here"
+          onChange={()=>{setError( prev =>{ return{...prev,edesc:""}})}}
         ></textarea>
+        <span style={{color:"red"}}>{error.edesc}</span>
+        <b/>
         <div>
           <br />
           <br />
