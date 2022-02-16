@@ -51,11 +51,13 @@ function PostDisplay() {
       <div className="container">
         <div className="row m-2">
           {toDisplayPosts.map((post) => (
-            <PostCard
-              key={post.key}
-              details={post}
-              deletePost={deletePostHandler}
-            />
+            <div className="col-12 my-1">
+              <PostCard
+                key={post.key}
+                details={post}
+                deletePost={deletePostHandler}
+              />
+            </div>
           ))}
         </div>
       </div>
