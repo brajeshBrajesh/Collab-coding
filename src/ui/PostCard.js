@@ -176,7 +176,7 @@ function PostCard(props) {
       <CardActions disableSpacing>
         <IconButton
           aria-label="like"
-          sx={{ background: likedByUser ? "blue" : "white" }}
+          sx={{ color: likedByUser ? "blue" : "grey" }}
           onClick={likeHandler}
         >
           <ThumbUpRoundedIcon />
@@ -184,7 +184,7 @@ function PostCard(props) {
         <span>{likesCount}</span>
         <IconButton
           aria-label="comment"
-          sx={{ marginLeft: "3rem" }}
+          sx={{ marginLeft: "3rem", color: showComments ? "blue" : "grey" }}
           onClick={commentsHandler}
         >
           <QuestionAnswerOutlinedIcon />
