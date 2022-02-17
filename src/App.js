@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import PrivateRoutes from "./private routes/PrivateRoutes";
 import Home from "./pages/Home";
 import PageNotFound from "./pages/PageNotFound";
+import Admin from "./pages/MakeAdmin";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 
         <Route element={<PrivateRoutes />}>
           <Route path="/home" element={<Home />} />
+          <Route path="/admin" element={<Admin />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<PageNotFound />} />

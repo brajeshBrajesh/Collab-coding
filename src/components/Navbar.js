@@ -46,6 +46,11 @@ function Navbar() {
                 Content
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link " aria-current="page" to="/admin">
+                Make Admin
+              </NavLink>
+            </li>
           </ul>
           <div className="d-flex">
             <button
