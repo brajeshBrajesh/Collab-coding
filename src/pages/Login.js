@@ -13,6 +13,9 @@ import { useDispatch } from "react-redux";
 import { loginActions } from "../redux/Auth";
 import Spinner from "../ui/Spinner";
 import Signup from "../components/signup/Signup";
+// var admin = require("firebase-admin");
+
+// var serviceAccount = require("../server/my-first-project-3fbf8-firebase-adminsdk-cndpv-96d2835148.json");
 
 function Login() {
   console.log("Login function");
@@ -41,10 +44,20 @@ function Login() {
       if (user) {
         const uid = user.uid;
         console.log(uid);
-
-        dispatch(loginActions.login(uid));
-        setLoading(false);
-        navigate("/home");
+        // console.log(user);
+        user
+          .getIdTokenResult()
+          .then((id) => {
+            if (id.claims.admin !== undefined) return true;
+            return false;
+          })
+          .then((isAdmin) => {
+            console.log(isAdmin);
+            dispatch(loginActions.login({uid, isAdmin}));
+            setLoading(false);
+            navigate("/home");
+          });
+        // function
       } else {
         console.log("signed out");
         setLoading(false);
