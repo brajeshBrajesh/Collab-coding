@@ -110,10 +110,20 @@ function CreatePost(props) {
   return (
     <div
       className="container"
-      style={{ border: "2px solid black", padding: "10px" }}
+      style={{
+        border: "1px solid SteelBlue",
+        padding: "10px",
+        width: "60%",
+        backgroundColor: "#000536",
+        margin: "auto",
+      }}
     >
       <div className="mb-3">
-        <label htmlFor="title" className="form-label fw-bold">
+        <label
+          htmlFor="title"
+          className="form-label "
+          style={{ color: "white", fontSize: "18px", padding: "5px" }}
+        >
           Enter title
         </label>
         <br />
@@ -122,6 +132,11 @@ function CreatePost(props) {
           type="text"
           id="title"
           ref={title}
+          style={{
+            resize: "none",
+            border: "4px solid SteelBlue",
+            margin: "auto",
+          }}
           placeholder="write here your post title"
           onChange={() => {
             setError((prev) => {
@@ -135,16 +150,21 @@ function CreatePost(props) {
         <br />
         <label
           htmlFor="exampleFormControlTextarea1"
-          className="form-label fw-bold ld"
+          className="form-label  ld"
+          style={{ color: "white", fontSize: "18px", padding: "5px" }}
         >
           Enter your Post
         </label>
         <textarea
           className="form-control"
           id="exampleFormControlTextarea1"
-          rows="3"
+          rows="5"
           ref={desc}
-          style={{ resize: "none" }}
+          style={{
+            resize: "none",
+            border: "4px solid SteelBlue",
+            margin: "auto",
+          }}
           placeholder="Write your post here"
           onChange={() => {
             setError((prev) => {
@@ -158,7 +178,11 @@ function CreatePost(props) {
           <br />
           <br />
           <div className="mb-3">
-            <label htmlFor="formFile" className="form-label">
+            <label
+              htmlFor="formFile"
+              className="form-label"
+              style={{ color: "white", fontSize: "18px", padding: "5px" }}
+            >
               Upload pictures/files
             </label>
             <input
