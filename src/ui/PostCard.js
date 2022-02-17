@@ -35,6 +35,11 @@ function PostCard(props) {
   const [showComments, setShowComments] = useState(false);
 
   const userId = useSelector((state) => state.login.loginId); //from redux
+  const userName = props.details.userDetails.userName.toUpperCase();
+  let profile = userName
+    .split(/\s/)
+    .reduce((response, word) => (response += word.slice(0, 1)), "")
+    .substring(0, 2);
   // console.log("renders again");
   useEffect(() => {
     checkIfPostIsLikedByUser(
@@ -59,53 +64,7 @@ function PostCard(props) {
   const commentsHandler = () => {
     setShowComments(!showComments);
   };
-  //   return (
-  //     <div
-  //       className="container my-3"
-  //       style={{ border: "2px solid black", whiteSpace: "pre-wrap" }}
-  //     >
-  //       <h4>{props.details.userDetails.userName}</h4>
-  //       {props.details.personalPost && (
-  //         <div>
-  //           <button>Edit</button>
-  //           <button
-  //             onClick={() =>
-  //               deleteHandler(
-  //                 props.details.key,
-  //                 props.details.userDetails.userId,
-  //                 props.details.content.img_path
-  //               )
-  //             }
-  //           >
-  //             Delete
-  //           </button>
-  //         </div>
-  //       )}
 
-  //       <h1>{props.details.content.title}</h1>
-  //       <p>{props.details.time}</p>
-  //       <p>{props.details.content.desc}</p>
-  //       {props.details.content.img_URL !== "" && (
-  //         <img
-  //           src={props.details.content.img_URL}
-  //           alt="Image"
-  //           style={{ height: "200px", width: "200px" }}
-  //         />
-  //       )}
-  //       <div className="cardFooter">
-  //         <button onClick={likeHandler}>{likedByUser ? "Unlike" : "Like"}</button>
-  //         {likesCount} <br />
-  //         {/* <button>Dislike</button> 1 */}
-  //         <button onClick={commentsHandler}>Comments</button>
-  //         {showComments && <Comments path={`comments/${props.details.key}`} />}
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
-  // export default PostCard;
-
-  // export default function PoatCard() {
   return (
     <Card
       sx={{
@@ -125,7 +84,7 @@ function PostCard(props) {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+            {profile}{" "}
           </Avatar>
         }
         action={

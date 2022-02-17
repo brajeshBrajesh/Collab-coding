@@ -42,7 +42,7 @@ function Navbar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link " aria-current="page" to="/home">
+              <NavLink className="nav-link " aria-current="page" to="/content">
                 Content
               </NavLink>
             </li>

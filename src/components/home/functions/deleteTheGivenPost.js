@@ -19,23 +19,26 @@ const deleteTheGivenPost = (
   const db = getDatabase();
 
   set(ref(db, "posts/" + postId), {});
-  get(child(ref(db), "users/" + postUserId + "/posts/allPosts")).then(
-    (snapshot) => {
-      if (snapshot.exists()) {
-        // console.log(snapshot.val());
-        const posts = snapshot.val();
-        let tempPosts = [];
-        for (let i = 0; i < posts.length; ++i) {
-          if (posts[i] !== postId) tempPosts.push(posts[i]);
-        }
-        set(ref(db, "users/" + postUserId + "/posts"), {
-          allPosts: tempPosts,
-        });
-      } else {
-        console.log("Not found snapshot");
-      }
-    }
-  );
+  // get(child(ref(db), "users/" + postUserId + "/posts/" + postId)).then(
+  //   (snapshot) => {
+  //     if (snapshot.exists()) {
+  //       // console.log(snapshot.val());
+  //       const posts = snapshot.val();
+  //       let tempPosts = [];
+  //       for (let i = 0; i < posts.length; ++i) {
+  //         if (posts[i] !== postId) tempPosts.push(posts[i]);
+  //       }
+  //       set(ref(db, "users/" + postUserId + "/posts"), {
+  //         allPosts: tempPosts,
+  //       });
+  //     } else {
+  //       console.log("Not found snapshot");
+  //     }
+  //   }
+  // );\
+  set(ref(db, "users/" + postUserId + "/posts/" + postId), {
+    posted: {},
+  });
 
   if (imagePath.length !== 0) deleteImageFromStorage(imagePath); //deleting image from storage
   let temp = [];

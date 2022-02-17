@@ -5,6 +5,7 @@ import PrivateRoutes from "./private routes/PrivateRoutes";
 import Home from "./pages/Home";
 import PageNotFound from "./pages/PageNotFound";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Content from "./pages/Content";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
 
         <Route element={<PrivateRoutes />}>
           <Route path="/home" element={<Home />} />
+          <Route path="/content" element={<Content/>}/>
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<PageNotFound />} />
