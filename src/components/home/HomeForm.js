@@ -16,18 +16,7 @@ function HomeForm(props) {
 
       set(ref(db, `users/${props.uid}`), {
         name: userName.current.value,
-        // posts: {
-        //   allPosts: ["junk"],
-        // },
-        // likes: {
-        //   allLikes: ["junk"],
-        // },
-        // dislikes: {
-        //   allDislikes: ["junk"],
-        // },
-        // comments: {
-        //   allComments: ["junk"],
-        // },
+      
       });
       dispatch(loginActions.userNameAdder(userName.current.value));
 

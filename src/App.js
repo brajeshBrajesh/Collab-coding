@@ -14,6 +14,7 @@ import College from "./pages/College";
 import FinalClgContent from "./pages/content/FinalClgContent";
 import Navbar from "./components/Navbar";
 import { useSelector } from "react-redux";
+import DsaTopic from "./pages/DsaTopic";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
@@ -28,7 +29,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/content" element={<Content />} />
             <Route path="/dsa" element={<Dsa />} />
-            <Route path="/dsa/:topic" element={<p>dsa</p>} />
+            <Route path="/dsa/:topic" element={<DsaTopic/>} />
             <Route path="/college" element={<College />} />
             <Route path="/college/:topic" element={<FinalClgContent />} />
             {/* <Route path="/custom" element={<Custom />} />
