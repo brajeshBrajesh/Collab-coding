@@ -1,6 +1,6 @@
 import React , {useState}from 'react'
 import AddButton from '../AddButton'
-import { getDatabase, ref, child, get, push, set } from "firebase/database";
+import { getDatabase, ref , push, set } from "firebase/database";
 import {
   getStorage,
   ref as sref,
@@ -13,12 +13,12 @@ export default function QnPaper() {
   const qnpaperRef = ref(db,'content/college/Qn paper');
   const qnpaperUID = push(qnpaperRef); 
    
-  const [file,setFile] = useState(null);
+  
   const [progress,setProgress] = useState(0);
 
   
-  function uploadHandler(){
-    console.log(file);
+  function uploadHandler(file){
+    console.log(file );
     const storage = getStorage();
     const filePath = "qnpapers/" + qnpaperUID.key ;
    //  console.log(bookUID.key);
@@ -58,11 +58,8 @@ export default function QnPaper() {
   }
   return (
     <div> 
-    <input type="file" onChange={(e) => {
-     setFile(e.target.files[0]);
-    }} 
-        // onClick={console.log(file)}
-/>
+    
+         
      <AddButton  onClick={uploadHandler} />
     </div>
   )

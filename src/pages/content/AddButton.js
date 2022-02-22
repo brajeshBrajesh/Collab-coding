@@ -1,18 +1,21 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { useSelector } from 'react-redux'
 import { Button } from '@mui/material'
 import { getDatabase, ref,push,set } from "firebase/database";
-import { internal_resolveProps } from '@mui/utils';
 export default function AddButton(props) {
 
     const isAdmin = useSelector((state) => state.login.isAdmin);
-    
+    const [file,setFile] = useState(null);
  
     return (
-    <div>
-        <Button  onClick={() => {
-            props.onClick();
-            }} variant="contained" style={{display:!isAdmin?'none':null}}>Add data</Button>
+    <div style={{display:!isAdmin?'none':null}}>
+      <input type="file" onChange={(e) => {
+      setFile(e.target.files[0]);
+      }} />
+
+      <Button  onClick={() => {
+          props.onClick(file);
+      }} variant="contained" >Add data</Button>
     </div>
   )
 }

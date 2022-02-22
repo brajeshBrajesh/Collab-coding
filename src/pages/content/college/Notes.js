@@ -13,11 +13,10 @@ export default function Notes() {
   const notesRef = ref(db,'content/college/Notes');
   const notesUID = push(notesRef); 
    
-  const [file,setFile] = useState(null);
-  const [progress,setProgress] = useState(0);
+   const [progress,setProgress] = useState(0);
 
  //
- function uploadHandler(){
+ function uploadHandler(file){
    console.log(file);
    const storage = getStorage();
    const filePath = "notes/" + notesUID.key ;
@@ -57,11 +56,8 @@ export default function Notes() {
  }
   return (
     <div> 
-    <input type="file" onChange={(e) => {
-     setFile(e.target.files[0]);
-    }} 
-        // onClick={console.log(file)}
-/>
+    
+     
       <AddButton  onClick={uploadHandler} />
     </div>
   )

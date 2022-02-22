@@ -19,9 +19,8 @@ export default function Books() {
      const bookRef = ref(db,'content/college/Books');
      const bookUID = push(bookRef); 
       
-     const [file,setFile] = useState(null);
-    //
-    function uploadHandler(){
+     //
+    function uploadHandler(file){
       console.log(file);
       const storage = getStorage();
       const filePath = "books/" + bookUID.key ;
@@ -93,11 +92,7 @@ export default function Books() {
   return (
     <>
       {loading && <p>Loading ... </p>}
-      <input type="file" onChange={(e) => {
-     setFile(e.target.files[0]);
-    }} 
-        // onClick={console.log(file)}
-      />
+       
       
       
       
