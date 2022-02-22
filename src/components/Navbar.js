@@ -2,13 +2,18 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginActions } from "../redux/Auth";
 function Navbar() {
+  const dispatch = useDispatch();
   const auth = getAuth();
   const navigate = useNavigate();
   const logOutHandler = () => {
     signOut(auth)
       .then(() => {
         alert("Logging you out");
+        dispatch(loginActions.logout());
+
         navigate("/");
       })
       .catch((error) => {
@@ -46,8 +51,25 @@ function Navbar() {
                 Content
               </NavLink>
             </li>
+            {/* <li className="nav-item">
+              <NavLink className="nav-link " aria-current="page" to="/custom">
+                Custom
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link " aria-current="page" to="/purpose">
+                Purpose
+              </NavLink>
+            </li> */}
           </ul>
           <div className="d-flex">
+            <NavLink
+              className="nav-link "
+              aria-current="page"
+              to="/notifications"
+            >
+              Notifications
+            </NavLink>
             <button
               className="btn btn-outline-success "
               onClick={logOutHandler}

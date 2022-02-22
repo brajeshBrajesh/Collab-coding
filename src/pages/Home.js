@@ -29,7 +29,7 @@ function Home() {
           // console.log(snapshot.val().posts.allPosts);
           setUserName(snapshot.val().name);
           dispatch(loginActions.userNameAdder(snapshot.val().name));
-          dispatch(postActions.postsFetcher(snapshot.val().posts.allPosts));
+          // dispatch(postActions.postsFetcher(snapshot.val().posts.allPosts));
 
           setUserNameExist(true);
         } else {
@@ -56,7 +56,7 @@ function Home() {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
 
       {loading && <Spinner />}
       {!loading && userNameExist && <MainHome />}
