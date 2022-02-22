@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getDatabase, ref, child, get } from "firebase/database";
 import { useSelector } from "react-redux";
+import AddButton from "../AddButton";
 export default function Books() {
   const [toDisplaData, setToDisplayData] = useState([]);
   const [bookFilters, setBookFilters] = useState([]);
@@ -34,6 +35,7 @@ export default function Books() {
   return (
     <>
       {loading && <p>Loading ... </p>}
+      <AddButton />
       <ul>
         {!loading &&
           toDisplaData.map((books) => (
