@@ -7,6 +7,7 @@ import NavCard from "../ui/NavCard";
 import { useSelector } from "react-redux";
 import styles from "./Dsa.module.css";
 import AddTopicForm from "../ui/AddTopicForm";
+import Spinner from "../ui/Spinner";
 
 export default function Dsa() {
   const isAdmin = useSelector((state) => state.login.isAdmin);
@@ -21,7 +22,7 @@ export default function Dsa() {
     let tempSaveToDatabase = [];
     for (let i = 0; i < allTopics.length; ++i) {
       if (i !== pos) {
-        tempDisplay.push(allTopics[i]);
+        tempDisplay.push({ ...allTopics[i], key: i });
         tempSaveToDatabase.push(allTopics[i].topic);
       }
     }
@@ -83,7 +84,7 @@ export default function Dsa() {
           />
         </div>
       </div>
-      {loading && <p>Loading...</p>}
+      {loading && <Spinner />}
       {!loading && (
         <div className="container text-center">
           {isAdmin && (
