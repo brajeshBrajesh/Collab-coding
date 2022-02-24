@@ -29,7 +29,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/content" element={<Content />} />
             <Route path="/dsa" element={<Dsa />} />
-            <Route path="/dsa/:topic" element={<DsaTopic/>} />
+            <Route path="/dsa/:topic" element={<DsaTopic />} />
             <Route path="/college" element={<College />} />
             <Route path="/college/:topic" element={<FinalClgContent />} />
             {/* <Route path="/custom" element={<Custom />} />
