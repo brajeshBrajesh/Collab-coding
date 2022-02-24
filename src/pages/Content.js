@@ -5,10 +5,14 @@ export default function Content() {
   return (
     <div>
       {/* <Navbar/> */}
-      <Link to="/college">College</Link>
+      <Link to="/college">
+        <img src="" alt="COLLEGE" />
+      </Link>
       <br />
-
-      <Link to="/dsa">DSA</Link>
+      {/* dsa */}
+      <Link to="/dsa">
+        <img src="" alt="DSA" />
+      </Link>
     </div>
   );
 }
