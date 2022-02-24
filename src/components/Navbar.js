@@ -51,11 +51,12 @@ function Navbar() {
                 Content
               </NavLink>
             </li>
-            {/* <li className="nav-item">
-              <NavLink className="nav-link " aria-current="page" to="/custom">
-                Custom
+            <li className="nav-item">
+              <NavLink className="nav-link " aria-current="page" to="/my-notes">
+                My-Notes
               </NavLink>
             </li>
+            {/* 
             <li className="nav-item">
               <NavLink className="nav-link " aria-current="page" to="/purpose">
                 Purpose

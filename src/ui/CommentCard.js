@@ -9,15 +9,17 @@ function CommentCard(props) {
   };
   //   console.log(props.path);
   const canDelete = props.userId === userId;
-//   console.log(canDelete);
+  //   console.log(canDelete);
   let path = props.path + "/comments";
   return (
     <div style={{ border: "1px solid blue" }}>
-      <h6>{props.name}</h6>
-      {canDelete && <button>Delete</button>}
+      <h6>
+        {props.name}
+      </h6>
+      {canDelete && <button >Delete</button>}
       <p>{props.comment}</p>
       <p>{props.time}</p>
-      
+
       {<button onClick={commentsHandler}>Comments</button>}
       {showComments && <Comments path={path} />}
     </div>

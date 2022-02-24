@@ -116,6 +116,7 @@ function CreatePost(props) {
         width: "60%",
         backgroundColor: "#000536",
         margin: "auto",
+        maxWidth: 800,
       }}
     >
       <div className="mb-3">
@@ -205,7 +206,11 @@ function CreatePost(props) {
             </div>
           )}
           {postClicked && <p>Uploading.....Please wait</p>}
-          <div>{imgurl && <img src={imgurl} />}</div>
+          <div>
+            {imgurl && (
+              <img src={imgurl} style={{maxWidth:"20"}} />
+            )}
+          </div>
           <br />
 
           <br />

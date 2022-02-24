@@ -19,10 +19,12 @@ const deleteTheGivenPost = (
   const db = getDatabase();
 
   set(ref(db, "posts/" + postId), {});
- 
+
   set(ref(db, "users/" + postUserId + "/posts/" + postId), {
     posted: {},
   });
+
+  set(ref(db, "comments/" + postId), {});
 
   if (imagePath.length !== 0) deleteImageFromStorage(imagePath); //deleting image from storage
   let temp = [];

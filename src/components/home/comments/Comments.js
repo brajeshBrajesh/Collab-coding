@@ -23,6 +23,10 @@ export default function Comments(props) {
     });
     setToDisplayComments(comments);
   };
+
+  // const deleteTheComment = () => {
+  //   console.log("delete clicked");
+  // };
   return (
     <div>
       <InputComment path={props.path} addComment={addToComment} />
