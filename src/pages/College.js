@@ -7,12 +7,18 @@ export default function College() {
     <>
       {/* <Navbar /> */}
       <div>
-        <Link to="notes">Notes</Link>
+        <Link to="notes">
+          <img src="" alt="NOTES" />
+        </Link>
         <br />
 
-        <Link to="qn-paper">Qn paper</Link>
+        <Link to="qn-paper">
+          <img src="" alt="QUESTION PAPERS" />
+        </Link>
         <br />
-        <Link to="books">Books</Link>
+        <Link to="books">
+          <img src="" alt="BOOKS" />
+        </Link>
       </div>
     </>
   );
