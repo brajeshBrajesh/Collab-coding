@@ -1,5 +1,7 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useRef} from 'react'
 import AddButton from '../AddButton'
+import { useSelector } from "react-redux";
+
 import { getDatabase, ref, child, get, push, set } from "firebase/database";
 import {
   getStorage,
@@ -14,9 +16,14 @@ export default function Notes() {
   const notesUID = push(notesRef); 
    
    const [progress,setProgress] = useState(0);
-
+   const isAdmin = useSelector((state) => state.login.isAdmin);
+   const [showform,setShowform] = useState();
+   const subject = useRef();
+   const  sem = useRef();
  //
  function uploadHandler(file){
+  
+  
    console.log(file);
    const storage = getStorage();
    const filePath = "notes/" + notesUID.key ;
@@ -42,9 +49,9 @@ export default function Notes() {
           
          set(notesUID,{
            pdfURL: downloadURL,
-           notesName:"Ml",
-           subject:"Da",
-           sem:"1"
+            
+           subject:subject.current.value,
+           sem: sem.current.value
    
          }).then(()=>{
            console.log("sucessful");
@@ -56,9 +63,38 @@ export default function Notes() {
  }
   return (
     <div> 
-    
+    <button type="button" class="btn btn-outline-success" style={{display:!isAdmin?'none':null}} onClick={()=>{setShowform(!showform)}}>
+           
+           Add Notes  
+           </button>
+           {showform && 
+        <form
+        action=""
+        style={{
+          width: "18%",
+          borderRadius: "5px",
+          padding: 5,
+          textAlign: "center",
+          border: "1px solid gray",
+          borderTop: "3px solid Seagreen",
+          backgroundColor: "mintcream",
+          //   borderStyle: "ridge",
+        }}
+      >
+        <fieldset>
+          <legend>Notes Details</legend>
+          <label htmlfor="fname">Enter subject </label>
+          <br />
+          <input type="text" id="fname" ref={subject} name="fname" />
+          <br />
+          <br />
+          <label htmlfor="lname">Semester</label>
+          <input type="text" id="lname" ref={sem} name="lname" />
+          <br />
+          <AddButton  onClick={uploadHandler} />
+         </fieldset>
+      </form>}
      
-      <AddButton  onClick={uploadHandler} />
-    </div>
+     </div>
   )
 }

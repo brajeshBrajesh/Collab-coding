@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { getDatabase, ref, child, get, push, set } from "firebase/database";
 import { useSelector } from "react-redux";
 import AddButton from "../AddButton";
+ 
+import BooksDetail from "../../../components/BooksDetail";
+import BooksAddDet from "../../../components/BooksAddDet";
 import {
   getStorage,
   ref as sref,
@@ -9,10 +12,16 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 export default function Books() {
+  const isAdmin = useSelector((state) => state.login.isAdmin);
   const [toDisplaData, setToDisplayData] = useState([]);
   const [bookFilters, setBookFilters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [progress,setProgress] = useState(0);
+  const [showform,setShowform] = useState();
+    const subject = useRef();
+    const author = useRef();
+    const BookName = useRef();
+    const sem = useRef();
   const dbRef = ref(getDatabase());
   const db = getDatabase();
       
@@ -46,9 +55,10 @@ export default function Books() {
              
             set(bookUID,{
               pdfURL: downloadURL,
-              bookName:"Ml",
-              subject:"Da",
-              sem:"1"
+              bookName:BookName.current.value,
+              Author:author.current.value,
+              Subject:subject.current.value,
+              semester:sem.current.value
       
             }).then(()=>{
               console.log("sucessful");
@@ -94,9 +104,48 @@ export default function Books() {
       {loading && <p>Loading ... </p>}
        
       
+      <button type="button" class="btn btn-outline-success" style={{display:!isAdmin?'none':null}} onClick={()=>{setShowform(!showform)}}>
+           
+        Add Book Details
+        </button>
       
-      
-      <AddButton  onClick={uploadHandler} />
+
+
+        {showform && 
+        <form
+        action=""
+        style={{
+          width: "18%",
+          borderRadius: "5px",
+          padding: 5,
+          textAlign: "center",
+          border: "1px solid gray",
+          borderTop: "3px solid Seagreen",
+          backgroundColor: "mintcream",
+          //   borderStyle: "ridge",
+        }}
+      >
+        <fieldset>
+          <legend>Book Details</legend>
+          <label htmlfor="lname">Book Name</label>
+          <br />
+          <input type="text" id="lname" ref={BookName} name="lname"   />
+          <label htmlfor="fname">Enter subject </label>
+          <br />
+          <input type="text" id="fname" ref={subject} name="fname" />
+          <br />
+
+          <label htmlfor="lname">Book author</label>
+          <br />
+          <input type="text" id="lname" ref={author} name="lname" />
+          <br />
+          <label htmlfor="lname">Semester</label>
+          <input type="text" id="lname" ref={sem} name="lname" />
+
+          <br />
+          <AddButton  onClick={uploadHandler} />
+         </fieldset>
+      </form>}
 
       <ul>
         {!loading &&

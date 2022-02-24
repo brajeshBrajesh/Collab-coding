@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Books = () => {
+export const BooksDetail = () => {
   return (
     <>
       <form
@@ -34,4 +34,4 @@ export const Books = () => {
     </>
   );
 };
-export default Books;
+export default BooksDetail;
