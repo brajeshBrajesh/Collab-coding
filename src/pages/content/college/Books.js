@@ -159,7 +159,13 @@ export default function Books() {
             />
             <br />
             <br></br>
-            <input type="file" id="fileadd" name="fileadd" />
+
+            <input
+              type="file"
+              id="fileadd"
+              name="fileadd"
+              style={{ align: "center" }}
+            />
 
             {/* <AddButton onClick={uploadHandler} /> */}
           </fieldset>
