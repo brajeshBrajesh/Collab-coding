@@ -66,7 +66,7 @@ export default function QnPaper() {
     <div>
       <button
         type="button"
-        class="btn btn-outline-success"
+        class="btn btn-outline-success mx-2 my-3"
         style={{ display: !isAdmin ? "none" : null }}
         onClick={() => {
           setShowform(!showform);
