@@ -121,6 +121,16 @@ export default function QnPaper() {
             <br />
             <br />
             <input type="file" id="fileadd" name="fileadd" />
+            <br />
+            <br />
+
+            <button
+              className="btn btn-secondary"
+              type="button"
+              style={{ backgroundColor: "RoyalBlue" }}
+            >
+              ADD
+            </button>
             {/* <AddButton onClick={uploadHandler} /> */}
           </fieldset>
         </form>
