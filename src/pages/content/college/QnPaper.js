@@ -72,7 +72,7 @@ export default function QnPaper() {
           setShowform(!showform);
         }}
       >
-        Add Notes
+        Add Question Papers
       </button>
       {showform && (
         <form className={styles.center}>
