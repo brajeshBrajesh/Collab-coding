@@ -63,7 +63,7 @@ export default function Notes() {
     <div>
       <button
         type="button"
-        class="btn btn-outline-success mx-2 my-3"
+        class="btn btn-outline-success mx-2 my-3 btnc"
         style={{ display: !isAdmin ? "none" : null }}
         onClick={() => {
           setShowform(!showform);
@@ -71,43 +71,61 @@ export default function Notes() {
       >
         Add Notes
       </button>
+
       {showform && (
-        <form className={styles.center}>
-          <fieldset>
-            <legend>Notes Details</legend>
-            <label htmlfor="fname">Enter subject: </label> <br />
-            <input
-              type="text"
-              id="fname"
-              ref={subject}
-              name="fname"
-              className={styles.mytext}
-            />
-            <br />
-            <label htmlfor="lname">Semester:</label>
-            <br />
-            <input
-              type="text"
-              id="lname"
-              ref={sem}
-              name="lname"
-              className={styles.mytext}
-            />
-            <br />
-            <br />
-            <input type="file" id="fileadd" name="fileadd" />
-            <br />
-            <br />
-            <button
-              className="btn btn-secondary"
-              type="button"
-              style={{ backgroundColor: "RoyalBlue" }}
-            >
-              ADD
-            </button>
-            {/* <AddButton onClick={uploadHandler} /> */}
-          </fieldset>
-        </form>
+        <div className={styles.container}>
+          <form className={styles.center}>
+            <fieldset>
+              <legend>Notes Details</legend>
+              <div className="row">
+                <div className="col-25">
+                  <label htmlfor="fname">Enter subject: </label>
+                </div>
+                <div className="col-75">
+                  <input
+                    type="text"
+                    id="fname"
+                    ref={subject}
+                    name="fname"
+                    className={styles.mytext}
+                  />
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-25">
+                  <label htmlfor="lname">Semester:</label>
+                </div>
+
+                <div className="col-75">
+                  <input
+                    type="text"
+                    id="lname"
+                    ref={sem}
+                    name="lname"
+                    className={styles.mytext}
+                  />
+                </div>
+              </div>
+              <br />
+              <div class="col-75">
+                <input type="file" id="fileadd" name="fileadd" />
+              </div>
+              <br />
+
+              <div>
+                <button
+                  className="btn btn-secondary"
+                  type="button"
+                  style={{ backgroundColor: "RoyalBlue" }}
+                >
+                  ADD
+                </button>
+              </div>
+              {/* <AddButton onClick={uploadHandler} /> */}
+            </fieldset>
+          </form>
+        </div>
       )}
     </div>
   );
