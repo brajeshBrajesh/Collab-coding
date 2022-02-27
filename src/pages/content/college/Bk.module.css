@@ -1,10 +1,10 @@
-/* .center {
+.center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: medium;
-} */
+  /* font-size: medium; */
+}
 /* input[type="text"]  */
 /* .mytext {
   background-color: rgb(237, 238, 250);
@@ -38,15 +38,15 @@ legend {
 input[type="text"] {
   width: 100%;
   padding: 12px;
-  background-color: rgb(237, 238, 250);
-  border: 1px solid #ccc;
+  background-color: rgba(248, 248, 248, 0.986);
+  border: 1px solid rgb(134, 164, 248);
   border-radius: 4px;
   box-sizing: border-box;
   resize: vertical;
   font-family: monospace;
   border-radius: 20px;
   box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.7);
-  border: 5px solid lightblue;
+  height: 35px;
 }
 input[type="file"] {
   width: 100%;
@@ -55,7 +55,8 @@ input[type="file"] {
   box-sizing: border-box;
   resize: vertical;
   font-family: monospace;
-  border-radius: 20px;
+  height: 35px;
+  padding: 2px;
 }
 
 /* Style the label to display next to the inputs */
@@ -78,9 +79,11 @@ label {
 /* Style the container */
 .container {
   border-radius: 5px;
-  background-color: #f2f2f2;
   padding: 20px;
-  width: 50%;
+  /* width: 70; */
+  left: 50%;
+  top: auto;
+  flex-wrap: wrap;
 }
 
 /* Floating column for labels: 25% width */
