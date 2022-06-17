@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import AddButton from "../AddButton";
 import { useSelector } from "react-redux";
-import styles from "./Bk.module.css";
 
 import { getDatabase, ref, child, get, push, set } from "firebase/database";
 import {
@@ -10,6 +9,9 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
+
+import styles from "./Notes.module.css";
+
 export default function Notes() {
   const db = getDatabase();
 
@@ -53,80 +55,98 @@ export default function Notes() {
               sem: sem.current.value,
             }).then(() => {
               console.log("sucessful");
+              off();
             });
           }
         });
       }
     );
   }
+
+  function on() {
+    console.log("on");
+    document.getElementById("overlay").style.display = "block";
+  }
+
+  function off() {
+    document.getElementById("overlay").style.display = "none";
+  }
+
   return (
     <div>
-      <button
-        type="button"
-        class="btn btn-outline-success mx-2 my-3 btnc"
-        style={{ display: !isAdmin ? "none" : null }}
-        onClick={() => {
-          setShowform(!showform);
-        }}
-      >
-        Add Notes
-      </button>
-
-      {showform && (
-        <div className={styles.container}>
-          <form className={styles.center}>
+      <div id="overlay" className={styles.overlay}>
+        <div id="text" className={styles.text}>
+          <form
+            action=""
+            // style={{
+            //   width: "18%",
+            //   borderRadius: "5px",
+            //   padding: 5,
+            //   textAlign: "center",
+            //   border: "1px solid gray",
+            //   borderTop: "3px solid Seagreen",
+            //   backgroundColor: "mintcream",
+            //   //   borderStyle: "ridge",
+            // }}
+          >
             <fieldset>
               <legend>Notes Details</legend>
-              <div className="row">
-                <div className="col-25">
-                  <label htmlfor="fname">Enter subject: </label>
-                </div>
-                <div className="col-75">
-                  <input
-                    type="text"
-                    id="fname"
-                    ref={subject}
-                    name="fname"
-                    className={styles.mytext}
-                  />
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="col-25">
-                  <label htmlfor="lname">Semester:</label>
-                </div>
-
-                <div className="col-75">
-                  <input
-                    type="text"
-                    id="lname"
-                    ref={sem}
-                    name="lname"
-                    className={styles.mytext}
-                  />
-                </div>
-              </div>
+              <label htmlfor="fname">Enter subject </label>
               <br />
-              <div class="col-75">
-                <input type="file" id="fileadd" name="fileadd" />
-              </div>
+              <input type="text" id="fname" ref={subject} name="fname" />
               <br />
-
-              <div>
-                <button
-                  className="btn btn-secondary"
-                  type="button"
-                  style={{ backgroundColor: "RoyalBlue" }}
-                >
-                  ADD
-                </button>
-              </div>
-              {/* <AddButton onClick={uploadHandler} /> */}
+              <br />
+              <label htmlfor="lname">Semester</label>
+              <input type="text" id="lname" ref={sem} name="lname" />
+              <br />
+              <AddButton onClick={uploadHandler} />
+              <button
+                type="button"
+                className="btn btn-secondary "
+                onClick={off}
+              >
+                Cancel
+              </button>
             </fieldset>
           </form>
         </div>
-      )}
+      </div>
+      {/* <button type="button" class="btn btn-outline-success" style={{display:!isAdmin?'none':null}} onClick={()=>{setShowform(!showform)}}>
+           
+           Add Notes  
+           </button>
+           {showform && 
+        <form
+        action=""
+        style={{
+          width: "18%",
+          borderRadius: "5px",
+          padding: 5,
+          textAlign: "center",
+          border: "1px solid gray",
+          borderTop: "3px solid Seagreen",
+          backgroundColor: "mintcream",
+          //   borderStyle: "ridge",
+        }}
+      >
+        <fieldset>
+          <legend>Notes Details</legend>
+          <label htmlfor="fname">Enter subject </label>
+          <br />
+          <input type="text" id="fname" ref={subject} name="fname" />
+          <br />
+          <br />
+          <label htmlfor="lname">Semester</label>
+          <input type="text" id="lname" ref={sem} name="lname" />
+          <br />
+          <AddButton  onClick={uploadHandler} />
+         </fieldset>
+      </form>} */}
+      <div className="col-4" style={{ border: "2px solid red" }}>
+        <button type="button" class="btn btn-success" onClick={on}>
+          AddNote
+        </button>
+      </div>
     </div>
   );
 }

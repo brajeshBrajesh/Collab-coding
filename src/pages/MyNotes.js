@@ -1,9 +1,32 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import styles from "./MyNotes.module.css";
+import AddNotesForm from "../ui/AddNotesForm";
 export default function MyNotes() {
+  const [toDisplayNotes, setToDisplayNotes] = useState([]);
+
+  useEffect(() => {
+    console.log("UseEffect called of my notes");
+  }, []);
+
+  function on() {
+    console.log("on");
+    document.getElementById("overlay").style.display = "block";
+  }
+
+  function off() {
+    document.getElementById("overlay").style.display = "none";
+  }
   return (
-    <div>
-      <div className="alert alert-warning alert-dismissible fade show my-1" role="alert">
+    <>
+      <div id="overlay" className={styles.overlay}>
+        <div id="text" className={styles.text}>
+          <AddNotesForm overlayOut={off} />
+        </div>
+      </div>
+      <div
+        className="alert alert-warning alert-dismissible fade show my-1"
+        role="alert"
+      >
         <strong>This is your personal section!</strong> Here you can store your
         important notes for future refrance.
         <button
@@ -13,103 +36,16 @@ export default function MyNotes() {
           aria-label="Close"
         ></button>
       </div>
-      <div className="container my-1">
-        <div className="accordion" id="accordionPanelsStayOpenExample">
-          <div className="accordion-item">
-            <h2 className="accordion-header" id="panelsStayOpen-headingOne">
-              <button
-                className="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne"
-                aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne"
-              >
-                Accordion Item #1
-              </button>
-            </h2>
-            <div
-              id="panelsStayOpen-collapseOne"
-              className="accordion-collapse collapse show"
-              aria-labelledby="panelsStayOpen-headingOne"
-            >
-              <div className="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is
-                shown by default, until the collapse plugin adds the appropriate
-                classes that we use to style each element. These classes control
-                the overall appearance, as well as the showing and hiding via
-                CSS transitions. You can modify any of this with custom CSS or
-                overriding our default variables. It's also worth noting that
-                just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
-              </div>
-            </div>
-          </div>
-          <div className="accordion-item">
-            <h2 className="accordion-header" id="panelsStayOpen-headingTwo">
-              <button
-                className="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseTwo"
-                aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseTwo"
-              >
-                Accordion Item #2
-              </button>
-            </h2>
-            <div
-              id="panelsStayOpen-collapseTwo"
-              className="accordion-collapse collapse"
-              aria-labelledby="panelsStayOpen-headingTwo"
-            >
-              <div className="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is
-                hidden by default, until the collapse plugin adds the
-                appropriate classes that we use to style each element. These
-                classes control the overall appearance, as well as the showing
-                and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
-              </div>
-            </div>
-          </div>
-          <div className="accordion-item">
-            <h2 className="accordion-header" id="panelsStayOpen-headingThree">
-              <button
-                className="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseThree"
-                aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseThree"
-              >
-                Accordion Item #3
-              </button>
-            </h2>
-            <div
-              id="panelsStayOpen-collapseThree"
-              className="accordion-collapse collapse"
-              aria-labelledby="panelsStayOpen-headingThree"
-            >
-              <div className="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is
-                hidden by default, until the collapse plugin adds the
-                appropriate classes that we use to style each element. These
-                classes control the overall appearance, as well as the showing
-                and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
-              </div>
-            </div>
-          </div>
+      <div className="row">
+        <div className="col-4" style={{ border: "2px solid red" }}>
+          <button type="button" class="btn btn-success" onClick={on}>
+            AddNote
+          </button>
+        </div>
+        <div className="col-8">
+          <h1>HI</h1>
         </div>
       </div>
-    </div>
+    </>
   );
 }

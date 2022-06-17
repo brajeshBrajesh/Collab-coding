@@ -7,7 +7,7 @@ admin.initializeApp({
   databaseURL: "https://my-first-project-3fbf8.firebaseio.com",
 });
 
-const uid = "UOaSL8FopsO0bThndtWSiZCaBIx1";
+const uid = "89zry7PeowaLEghpJ4FQuvD4JGB2";
 
 return (
   admin.auth()

@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   /* background: #222; */
-  background-color: rgb(206, 204, 204);
+  background: linear-gradient(65deg, #d9dbdb 30%, #f6f4f8 90%);
 }
 
 .card {
@@ -13,7 +13,7 @@
   width: 450px;
   display: flex;
   position: relative;
-  background: linear-gradient(#3e5bff, #b6e5f8);
+  background: linear-gradient(#51f3f8, #ff5acd);
   border-radius: 5%;
   box-shadow: 10px 10px 5px grey;
 }

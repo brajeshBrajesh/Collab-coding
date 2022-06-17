@@ -3,14 +3,11 @@ import app from "../firebase/Firebase";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./CreatePost.module.css";
-import TextareaAutosize from '@mui/base/TextareaAutosize';
-import TextField from '@mui/material/TextField';
-import { InputAdornment } from "@mui/material";
-import CreateIcon from '@mui/icons-material/Create';
+
 import { push, getDatabase, set, ref as tempRef } from "firebase/database";
 import imgUploadHandlerAndSaveInDatabase from "./functions/imgUploadHandlerAndSaveInDatabase.js";
 import saveToDatabase from "./functions/saveToDatabase";
-import UploadFileIcon from '@mui/icons-material/UploadFile';
+
 function CreatePost(props) {
   const [file, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
@@ -114,41 +111,33 @@ function CreatePost(props) {
     <div
       className="container"
       style={{
-        borderRadius:"30px",
         border: "1px solid SteelBlue",
         padding: "10px",
         width: "60%",
-        // backgroundColor: "#C4DDFF",
+        backgroundColor: "#000536",
         margin: "auto",
         maxWidth: 800,
       }}
     >
       <div className="mb-3">
-        
-       
-      
-        <TextField 
-          // type="text"
+        <label
+          htmlFor="title"
+          className="form-label "
+          style={{ color: "white", fontSize: "18px", padding: "5px" }}
+        >
+          Enter title
+        </label>
+        <br />
+
+        <input
+          type="text"
           id="title"
           ref={title}
-          // label="EnterTitle"
-          size="medium"
           style={{
             resize: "none",
-            width:"49rem",
-            margin:"2rem 0 0 0"
-            
-            // border: "4px solid SteelBlue",
-            // margin: "auto",
+            border: "4px solid SteelBlue",
+            margin: "auto",
           }}
-          InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <CreateIcon />
-            </InputAdornment>
-          ),
-        }}
-          variant="standard"
           placeholder="write here your post title"
           onChange={() => {
             setError((prev) => {
@@ -156,24 +145,26 @@ function CreatePost(props) {
             });
           }}
         />
- 
-        
         <br />
         <span style={{ color: "red" }}>{error.etitle}</span>
         <br />
         <br />
-        
-        <TextareaAutosize
-          variant="standard"
+        <label
+          htmlFor="exampleFormControlTextarea1"
+          className="form-label  ld"
+          style={{ color: "white", fontSize: "18px", padding: "5px" }}
+        >
+          Enter your Post
+        </label>
+        <textarea
           className="form-control"
           id="exampleFormControlTextarea1"
           rows="5"
           ref={desc}
           style={{
             resize: "none",
-            borderRadius:"20px",
-            // border: "4px solid SteelBlue",
-            margin: "3rem 0 0 0 ",
+            border: "4px solid SteelBlue",
+            margin: "auto",
           }}
           placeholder="Write your post here"
           onChange={() => {
@@ -181,7 +172,7 @@ function CreatePost(props) {
               return { ...prev, edesc: "" };
             });
           }}
-        ></TextareaAutosize>
+        ></textarea>
         <span style={{ color: "red" }}>{error.edesc}</span>
         <b />
         <div>
@@ -191,20 +182,16 @@ function CreatePost(props) {
             <label
               htmlFor="formFile"
               className="form-label"
-               
-              style={{ color: "black",fontFamily:"Open Sans, sans-serif", fontSize: "18px", padding: "5px" }}
+              style={{ color: "white", fontSize: "18px", padding: "5px" }}
             >
-              <UploadFileIcon  />
               Upload pictures/files
+            </label>
             <input
-              
-              style={{ resize:"none",display:"none"}}
               className="form-control"
               type="file"
               id="formFile"
               onChange={fileChangeHandler}
             />
-            </label>
           </div>
           {postClicked && (
             <div className="progress my-2">

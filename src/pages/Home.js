@@ -12,6 +12,15 @@ import { loginActions } from "../redux/Auth";
 import { postActions } from "../redux/Post";
 
 function Home() {
+  // console.log(" href => " + window.location.href);
+  // console.log(" host => " + window.location.host);
+  // console.log(" hostname => " + window.location.hostname);
+  // console.log(" port => " + window.location.port);
+  // console.log(" protocol => " + window.location.protocol);
+  // console.log(" pathname => " + window.location.pathname);
+  // console.log(" hashpathname => " + window.location.hash);
+  // console.log(" search=> " + window.location.search);
+
   const db = getDatabase();
   const dispatch = useDispatch();
   const uid = useSelector((state) => state.login.loginId);

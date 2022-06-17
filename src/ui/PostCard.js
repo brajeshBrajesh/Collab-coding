@@ -35,6 +35,7 @@ function PostCard(props) {
   const [showComments, setShowComments] = useState(false);
 
   const userId = useSelector((state) => state.login.loginId); //from redux
+  const isAdmin = useSelector((state) => state.login.isAdmin);
   const userName = props.details.userDetails.userName.toUpperCase();
   let profile = userName
     .split(/\s/)
@@ -64,12 +65,14 @@ function PostCard(props) {
   const commentsHandler = () => {
     setShowComments(!showComments);
   };
-
+  let border = "none";
+  if (props.details.personalPost && isAdmin) border = "2px solid blue";
+// console.log(border)
   return (
     <Card
       sx={{
         maxWidth: 800,
-        // border: "2px solid pink",
+        border: { border },
         borderRadius: "10px",
         position: "relative",
         boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
@@ -88,7 +91,7 @@ function PostCard(props) {
           </Avatar>
         }
         action={
-          props.details.personalPost && (
+          (props.details.personalPost || isAdmin) && (
             <div>
               <IconButton aria-label="delete">
                 <EditIcon />
@@ -104,7 +107,6 @@ function PostCard(props) {
                   )
                 }
               >
-                {/* <MoreVertIcon /> */}
                 <DeleteIcon />
               </IconButton>
             </div>

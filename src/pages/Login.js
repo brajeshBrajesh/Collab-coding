@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import app from "../firebase/Firebase";
+import { useLocation } from "react-router-dom";
 import {
   getAuth,
   setPersistence,
@@ -17,7 +18,8 @@ import Signup from "../components/signup/Signup";
 
 // var serviceAccount = require("../server/my-first-project-3fbf8-firebase-adminsdk-cndpv-96d2835148.json");
 
-function Login() {
+function Login(props) {
+  console.log(props);
   console.log("Login function");
   const auth = getAuth();
   const navigate = useNavigate();
@@ -53,8 +55,9 @@ function Login() {
           })
           .then((isAdmin) => {
             console.log(isAdmin);
-            dispatch(loginActions.login({uid, isAdmin}));
+            dispatch(loginActions.login({ uid, isAdmin }));
             setLoading(false);
+            // const nav = window.location.pathname;
             navigate("/home");
           });
         // function
