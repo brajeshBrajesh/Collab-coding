@@ -40,9 +40,9 @@ export default function AddNotesForm(props) {
       setError((prev) => {
         return { ...prev, etitle: "Title cannot be empty" };
       });
-      if (desc.current.value.trim().length == 0) {
+      if (title.current.value.trim().length == 0) {
         setError((prev) => {
-          return { ...prev, edesc: "Nothing To post" };
+          return { ...prev, edesc: "No Title" };
         });
         return;
       }

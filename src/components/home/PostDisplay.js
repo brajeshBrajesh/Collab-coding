@@ -23,7 +23,8 @@ function PostDisplay() {
       setToDisplayPosts,
       toDisplayPosts,
       // userPosts,
-      userId
+      userId,
+      "posts"
     );
   }, [limit]);
   const loadMoreHandler = () => {

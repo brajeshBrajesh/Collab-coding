@@ -212,7 +212,7 @@ function CreatePost(props) {
           {postClicked && <p>Uploading.....Please wait</p>}
           <div>
             {imgurl && (
-              <img src={imgurl} style={{maxWidth:"20"}} />
+              <img src={imgurl} style={{borderRadius:"10px",maxWidth:"100%"}} />
             )}
           </div>
           <br />
