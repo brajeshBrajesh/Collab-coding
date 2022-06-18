@@ -111,19 +111,20 @@ function CreatePost(props) {
     <div
       className="container"
       style={{
-        border: "1px solid SteelBlue",
+        border: "3px solid black",
         padding: "10px",
         width: "60%",
-        backgroundColor: "#000536",
+        // backgroundColor: "#000536",
         margin: "auto",
         maxWidth: 800,
+        borderRadius:"5%"
       }}
     >
       <div className="mb-3">
         <label
           htmlFor="title"
           className="form-label "
-          style={{ color: "white", fontSize: "18px", padding: "5px" }}
+          style={{ color: "black", fontSize: "18px", padding: "5px" }}
         >
           Enter title
         </label>
@@ -135,7 +136,10 @@ function CreatePost(props) {
           ref={title}
           style={{
             resize: "none",
-            border: "4px solid SteelBlue",
+            border: "none",
+            borderRadius:"1%",
+            width:"775px",
+            height:"40px",
             margin: "auto",
           }}
           placeholder="write here your post title"
@@ -152,7 +156,7 @@ function CreatePost(props) {
         <label
           htmlFor="exampleFormControlTextarea1"
           className="form-label  ld"
-          style={{ color: "white", fontSize: "18px", padding: "5px" }}
+          style={{ color: "black", fontSize: "18px", padding: "5px" }}
         >
           Enter your Post
         </label>
@@ -163,7 +167,7 @@ function CreatePost(props) {
           ref={desc}
           style={{
             resize: "none",
-            border: "4px solid SteelBlue",
+            // border: "4px solid SteelBlue",
             margin: "auto",
           }}
           placeholder="Write your post here"
@@ -182,7 +186,7 @@ function CreatePost(props) {
             <label
               htmlFor="formFile"
               className="form-label"
-              style={{ color: "white", fontSize: "18px", padding: "5px" }}
+              style={{ color: "black", fontSize: "18px", padding: "5px" }}
             >
               Upload pictures/files
             </label>
