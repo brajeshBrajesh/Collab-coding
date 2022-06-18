@@ -142,8 +142,10 @@ export default function Notes() {
           <AddButton  onClick={uploadHandler} />
          </fieldset>
       </form>} */}
+     
       <div className="col-4" style={{ border: "2px solid red" }}>
-        <button type="button" class="btn btn-success" onClick={on}>
+        {/* <button type="button" class="btn btn-success" onClick={on}> */}
+           <button type="button" class="btn btn-outline-success" style={{display:!isAdmin?'none':null}} onClick={on}>
           AddNote
         </button>
       </div>
