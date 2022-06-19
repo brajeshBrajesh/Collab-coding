@@ -68,6 +68,7 @@ export default function MyNotes() {
             <ShowNotes
             details={notes}
             key={notes.key}
+            img_URL={notes.content.img_URL}
             />
           ))}
     </>
