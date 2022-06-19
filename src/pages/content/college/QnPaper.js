@@ -51,11 +51,16 @@ export default function QnPaper() {
             set(qnpaperUID, {
               pdfURL: downloadURL,
               subject: subject.current.value,
-              sem: sem.current.value,
+              sem: subject.current.value,
               teacher: teacher.current.value,
               year: year.current.value,
             }).then(() => {
               console.log("sucessful");
+              year.current.value = "";
+              subject.current.value = "";
+              teacher.current.value = "";
+              sem.current.value = "";
+              off();
             });
           }
         });
@@ -84,34 +89,29 @@ export default function QnPaper() {
         <div id="text" className={styles.text}>
           <form
             action=""
-            // style={{
-            //   width: "18%",
-            //   borderRadius: "5px",
-            //   padding: 5,
-            //   textAlign: "center",
-            //   border: "1px solid gray",
-            //   borderTop: "3px solid Seagreen",
-            //   backgroundColor: "mintcream",
-            //   //   borderStyle: "ridge",
-            // }}
+            style={{
+              border: "2px solid red",
+              padding: "2rem",
+              background: "pink",
+            }}
           >
             <fieldset>
               <legend>Question paper Details</legend>
-              <label htmlfor="fname">Enter subject </label>
+              <label htmlfor="subject">Enter subject </label>
               <br />
-              <input type="text" id="fname" ref={subject} name="fname" />
+              <input type="text" id="subject" ref={subject} name="subject" />
               <br />
               <br />
-              <label htmlfor="lname">Semester</label>
-              <input type="text" id="lname" ref={sem} name="lname" />
+              <label htmlfor="sem">Semester</label>
+              <input type="text" id="sem" ref={sem} name="sem" />
               <br />
               <label htmlfor="lname">Teacher</label>
               <input type="text" id="lname" ref={teacher} name="lname" />
               <br />
               <br />
-              <label htmlfor="lname">Year</label>
+              <label htmlfor="year">Year</label>
               <br />
-              <input type="text" id="lname" ref={year} name="lname" />
+              <input type="text" id="year" ref={year} name="year" />
               <br />
               <br />
               <AddButton onClick={uploadHandler} />
@@ -119,6 +119,7 @@ export default function QnPaper() {
                 type="button"
                 className="btn btn-secondary "
                 onClick={off}
+                // disabled
               >
                 Cancel
               </button>
