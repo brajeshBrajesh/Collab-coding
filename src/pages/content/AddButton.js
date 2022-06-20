@@ -12,10 +12,26 @@ export default function AddButton(props) {
       <input type="file" onChange={(e) => {
       setFile(e.target.files[0]);
       }} />
+      <br/>
+              <br/>
+      <div  className='text-center' >
 
-      <Button  onClick={() => {
+      <Button style={{position: 'relative '}} onClick={() => {
           props.onClick(file);
       }} variant="contained" >Add data</Button>
+      
+            <Button
+                // className="text-center"
+                variant="contained"
+                color='error'
+                style={{marginLeft:"32.2%"}}
+                type="button"
+                className="btn btnsecondary"
+                onClick={props.off}
+              >
+                Cancel
+              </Button>
+      </div>      
     </div>
   )
 }

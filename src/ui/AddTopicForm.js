@@ -40,7 +40,7 @@ export default function AddTopicForm(props) {
   return (
     <form
       onSubmit={topicAddHandler}
-      style={{ border: "2px solid red", padding: "2rem", background: "pink" }}
+      style={{ border: "2px solid red", padding: "2rem"  }}
     >
       <div class="mb-3">
         <label for="exampleInputtext1" class="form-label">
@@ -54,15 +54,20 @@ export default function AddTopicForm(props) {
           ref={topic}
         />
       </div>
-      <div id="textlHelp" class="form-text">
+      
+      <div id="textlHelp" class="form-text" style={{color:"black"}}>
         This topic will be entered at position {props.pos}
       </div>
-      <button type="submit" class="btn btn-primary">
+      <br/>
+      <div className="text-center">
+
+      <button type="submit" class="btn btn-primary" style={{marginRight:"20%"}}>
         Add
       </button>
       <button type="button" class="btn btn-primary" onClick={cancelHandler}>
         cancel
       </button>
+      </div>
     </form>
   );
 }

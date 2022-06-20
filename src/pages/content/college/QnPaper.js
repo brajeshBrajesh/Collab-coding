@@ -92,7 +92,7 @@ export default function QnPaper() {
             style={{
               border: "2px solid red",
               padding: "2rem",
-              background: "pink",
+              // background: "pink",
             }}
           >
             <fieldset>
@@ -101,28 +101,32 @@ export default function QnPaper() {
               <br />
               <input type="text" id="subject" ref={subject} name="subject" />
               <br />
-              <br />
+              <br/>
+              
               <label htmlfor="sem">Semester</label>
+              <br/>
               <input type="text" id="sem" ref={sem} name="sem" />
               <br />
+              <br/>
               <label htmlfor="lname">Teacher</label>
+              <br/>
               <input type="text" id="lname" ref={teacher} name="lname" />
               <br />
-              <br />
+              <br/>
               <label htmlfor="year">Year</label>
               <br />
               <input type="text" id="year" ref={year} name="year" />
               <br />
               <br />
-              <AddButton onClick={uploadHandler} />
-              <button
+              <AddButton off={off} onClick={uploadHandler} />
+              {/* <button
                 type="button"
                 className="btn btn-secondary "
                 onClick={off}
                 // disabled
               >
                 Cancel
-              </button>
+              </button> */}
             </fieldset>
           </form>
         </div>

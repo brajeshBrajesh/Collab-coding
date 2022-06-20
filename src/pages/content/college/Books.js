@@ -124,45 +124,47 @@ export default function Books() {
         <div id="text" className={styles.text}>
           <form
             action=""
-            style={
-              {
-                // width: "18%",
-                // borderRadius: "5px",
-                // padding: 5,
-                // textAlign: "center",
-                // border: "1px solid gray",
-                // borderTop: "3px solid Seagreen",
-                // backgroundColor: "mintcream",
-                //   borderStyle: "ridge",
-              }
-            }
+            style={{
+              border: "2px solid red",
+              padding: "2rem",
+              // background: "pink",
+            }}
+            
           >
             <fieldset>
               <legend>Book Details</legend>
+              <br/>
+              <br/>
               <label htmlfor="lname">Book Name</label>
               <br />
+              
               <input type="text" id="lname" ref={BookName} name="lname" />
+              <br/>
+              <br/>
               <label htmlfor="fname">Enter subject </label>
               <br />
               <input type="text" id="fname" ref={subject} name="fname" />
               <br />
+              <br/>
 
               <label htmlfor="lname">Book author</label>
               <br />
               <input type="text" id="lname" ref={author} name="lname" />
               <br />
+              <br/>
               <label htmlfor="lname">Semester</label>
+              <br/>
               <input type="text" id="lname" ref={sem} name="lname" />
-
+              <br/>
               <br />
-              <AddButton onClick={uploadHandler} />
-              <button
+              <AddButton off={off} onClick={uploadHandler} />
+              {/* <button
                 type="button"
                 className="btn btn-secondary "
                 onClick={off}
               >
                 Cancel
-              </button>
+              </button> */}
             </fieldset>
           </form>
         </div>

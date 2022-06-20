@@ -20,7 +20,7 @@ const notesFetch = (
             console.log(snapshot.val());
             let temp=[];
             for (const key in snapshot.val()) {
-                temp.push({...snapshot.val()[key],key:key});
+                temp.push({...temp,...snapshot.val()[key],key:key});
               }
               setToDisplayPosts((temp));
               console.log(temp);

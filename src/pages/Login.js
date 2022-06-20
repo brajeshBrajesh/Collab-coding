@@ -45,12 +45,14 @@ function Login(props) {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const uid = user.uid;
-        console.log(uid);
+        console.log(user);
         // console.log(user);
         user
           .getIdTokenResult()
           .then((id) => {
+            console.log(id.claims);
             if (id.claims.admin !== undefined) return true;
+            
             return false;
           })
           .then((isAdmin) => {

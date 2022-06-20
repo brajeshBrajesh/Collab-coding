@@ -2,19 +2,18 @@ import React, { useState, useEffect } from "react";
 import styles from "./MyNotes.module.css";
 import PostCard from "../ui/PostCard";
 import AddNotesForm from "../ui/AddNotesForm";
-// import postFetch from "./functions/postFetch";
+ 
 import { useSelector } from "react-redux";
 import notesFetch from "../components/home/functions/notesFetch";
-// import ShowNotes from "../components/home/ui/ShowNotes";
-// ../../ui/ShowNotes
+ 
 import ShowNotes from "../ui/ShowNotes";
-export default function MyNotes() {
-  // const [toDisplayNotes, setToDisplayNotes] = useState([]);
-  const [toDisplayPosts, setToDisplayPosts] = useState([]);
 
+export default function MyNotes() {
+  const [toDisplayPosts, setToDisplayPosts] = useState([]);
   const userId = useSelector((state) => state.login.loginId);
   useEffect(() => {
     console.log("UseEffect called of my notes");
+     
     notesFetch(
        
       setToDisplayPosts,
@@ -63,7 +62,7 @@ export default function MyNotes() {
           <h1>HI</h1>
         </div>
       </div>
-       
+      
         {toDisplayPosts.map((notes) => (
             <ShowNotes
             details={notes}

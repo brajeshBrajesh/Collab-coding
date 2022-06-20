@@ -20,7 +20,7 @@ export default function Notes() {
 
   const [progress, setProgress] = useState(0);
   const isAdmin = useSelector((state) => state.login.isAdmin);
-  const [showform, setShowform] = useState();
+  const [showform, setShowform] = useState("off");
   const subject = useRef();
   const sem = useRef();
   //
@@ -78,16 +78,11 @@ export default function Notes() {
         <div id="text" className={styles.text}>
           <form
             action=""
-            // style={{
-            //   width: "18%",
-            //   borderRadius: "5px",
-            //   padding: 5,
-            //   textAlign: "center",
-            //   border: "1px solid gray",
-            //   borderTop: "3px solid Seagreen",
-            //   backgroundColor: "mintcream",
-            //   //   borderStyle: "ridge",
-            // }}
+            style={{
+              border: "2px solid red",
+              padding: "2rem",
+              // background: "pink",
+            }}
           >
             <fieldset>
               <legend>Notes Details</legend>
@@ -97,16 +92,25 @@ export default function Notes() {
               <br />
               <br />
               <label htmlfor="lname">Semester</label>
+              <br/>
               <input type="text" id="lname" ref={sem} name="lname" />
-              <br />
-              <AddButton onClick={uploadHandler} />
-              <button
+              {/* <br /> */}
+              <br/>
+              <br/>
+              <div>
+
+              <AddButton off={off}     onClick={uploadHandler}  />
+              
+              {/* <button
+                // className="text-center"
+                
                 type="button"
-                className="btn btn-secondary "
-                onClick={off}
+                className="btn btn-secondary"
+                onClick={showform}
               >
                 Cancel
-              </button>
+              </button> */}
+              </div>
             </fieldset>
           </form>
         </div>
