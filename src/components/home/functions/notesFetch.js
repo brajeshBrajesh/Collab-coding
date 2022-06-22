@@ -1,32 +1,24 @@
-import{
-    getDatabase,
-    ref,
-    get,
-    query,
-
-} from "firebase/database";
+import { getDatabase, ref, get, query } from "firebase/database";
 const notesFetch = (
-    setToDisplayPosts,
-    toDisplayPosts,
-    // userPosts,
-    userId
+  setToDisplayPosts,
+  toDisplayPosts,
+  // userPosts,
+  userId
 ) => {
-    const db = getDatabase();
+  const db = getDatabase();
 
-    const dbRef = query(ref(db, "notes/"+userId+"/"));
+  const dbRef = query(ref(db, "notes/" + userId + "/"));
 
-    get(dbRef).then((snapshot)=>{
-        if(snapshot.exists()){
-            console.log(snapshot.val());
-            let temp=[];
-            for (const key in snapshot.val()) {
-                temp.push({...temp,...snapshot.val()[key],key:key});
-              }
-              setToDisplayPosts((temp));
-              console.log(temp);
-            
-          
-        }
-    })
+  get(dbRef).then((snapshot) => {
+    if (snapshot.exists()) {
+      console.log(snapshot.val());
+      let temp = [];
+      for (const key in snapshot.val()) {
+        temp.push({ ...snapshot.val()[key], key: key });
+      }
+      setToDisplayPosts(temp);
+      console.log(temp);
+    }
+  });
 };
 export default notesFetch;

@@ -2,27 +2,28 @@ import React, { useState, useEffect } from "react";
 import styles from "./MyNotes.module.css";
 import PostCard from "../ui/PostCard";
 import AddNotesForm from "../ui/AddNotesForm";
- 
+
 import { useSelector } from "react-redux";
 import notesFetch from "../components/home/functions/notesFetch";
- 
+
 import ShowNotes from "../ui/ShowNotes";
 
 export default function MyNotes() {
   const [toDisplayPosts, setToDisplayPosts] = useState([]);
   const userId = useSelector((state) => state.login.loginId);
+  const [renderAgain, setRenderAgain] = useState(0);
+  console.log(toDisplayPosts);
   useEffect(() => {
     console.log("UseEffect called of my notes");
-     
+
     notesFetch(
-       
       setToDisplayPosts,
       toDisplayPosts,
       // userPosts,
       userId,
       "notes"
     );
-  }, []);
+  }, [renderAgain]);
 
   function on() {
     console.log("on");
@@ -32,11 +33,19 @@ export default function MyNotes() {
   function off() {
     document.getElementById("overlay").style.display = "none";
   }
+
+  // function updateNewNotes(updatedNotes)
+  // {
+  //   setToDisplayPosts(updatedNotes);
+  // }
+  function updateRenderCounter() {
+    setRenderAgain(renderAgain + 1);
+  }
   return (
     <>
       <div id="overlay" className={styles.overlay}>
         <div id="text" className={styles.text}>
-          <AddNotesForm overlayOut={off} />
+          <AddNotesForm overlayOut={off} render={updateRenderCounter} />
         </div>
       </div>
       <div
@@ -62,14 +71,14 @@ export default function MyNotes() {
           <h1>HI</h1>
         </div>
       </div>
-      
-        {toDisplayPosts.map((notes) => (
-            <ShowNotes
-            details={notes}
-            key={notes.key}
-            img_URL={notes.content.img_URL}
-            />
-          ))}
+
+      {toDisplayPosts.map((notes) => (
+        <ShowNotes
+          details={notes}
+          key={notes.key}
+          img_URL={notes.content.img_URL}
+        />
+      ))}
     </>
   );
 }

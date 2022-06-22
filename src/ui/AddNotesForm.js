@@ -12,7 +12,7 @@ export default function AddNotesForm(props) {
   const [fileUrl, setFileUrl] = useState("");
   const [imgurl, setimgurl] = useState(null);
   const [postClicked, setPostClicked] = useState(false);
-  const [displaypreservednotes,setDisplaypreservednotes]=useState();
+  const [displaypreservednotes, setDisplaypreservednotes] = useState();
   const [error, setError] = useState({
     etitle: "",
     edesc: "",
@@ -33,12 +33,14 @@ export default function AddNotesForm(props) {
     desc.current.value = "";
     setimgurl(null);
     props.overlayOut();
-    document.getElementById("formFile").value="";
+    document.getElementById("formFile").value = "";
   };
   const submitHandler = (e) => {
     e.preventDefault();
     // setDisplaypreservednotes({title,desc});
-    <MyNotes  title desc/>
+
+    // <MyNotes  title desc/>
+
     if (title.current.value.trim().length === 0) {
       setError((prev) => {
         return { ...prev, etitle: "Title cannot be empty" };
@@ -79,16 +81,20 @@ export default function AddNotesForm(props) {
           setPostClicked,
 
           setProgress,
-          setFileUrl
+          setFileUrl,
+          props.render
         );
 
         console.log("Valid image");
+        // props.render();
       } else {
         alert("Invalid file type");
         setPostClicked(false);
       }
     } else {
+      console.log("THis is else");
       setPostClicked(true);
+      // setFileUrl("");
       saveToDatabase(
         navigate,
         newPostRef,
@@ -99,10 +105,12 @@ export default function AddNotesForm(props) {
         setPostClicked,
 
         "",
-        ""
+        "",
+        props.render,
+        setFileUrl
       );
-
-      console.log("saving to databse"); 
+      // props.render();
+      console.log("saving to databse");
     }
 
     // props.overlayOut();
@@ -115,11 +123,9 @@ export default function AddNotesForm(props) {
     }
   };
 
-  
-  return (    
+  return (
     <div style={{ border: "2px solid red", width: "30em", height: "30rem" }}>
       <form onSubmit={submitHandler}>
-
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">
             Enter topic
@@ -130,15 +136,15 @@ export default function AddNotesForm(props) {
             id="exampleFormControlInput1"
             placeholder="Title"
             ref={title}
-            onChange={()=>{
-              setError((prev)=>{
-                return {...prev,etitle: ""};
-              })
+            onChange={() => {
+              setError((prev) => {
+                return { ...prev, etitle: "" };
+              });
             }}
           />
           <span style={{ color: "red" }}>{error.etitle}</span>
         </div>
-        <br/>
+        <br />
         <div class="mb-3">
           <label for="exampleFormControlTextarea1" class="form-label">
             Enter your important points/notes/links or anything else here
@@ -148,14 +154,14 @@ export default function AddNotesForm(props) {
             id="exampleFormControlTextarea1"
             rows="3"
             ref={desc}
-            onChange={()=>{
-              setError((prev)=>{
-                return {...prev,edesc:""};
-              })
+            onChange={() => {
+              setError((prev) => {
+                return { ...prev, edesc: "" };
+              });
             }}
           ></textarea>
           <span style={{ color: "red" }}>{error.edesc}</span>
-          <br/>
+          <br />
           <div className="mb-3">
             <label
               htmlFor="formFile"
@@ -195,25 +201,23 @@ export default function AddNotesForm(props) {
               />
             )}
           </div>
-          <br/>
+          <br />
           <div className="text-center">
-
-          <button
-            type="submit"
-            class="btn btn-primary mb-3"
-            disabled={postClicked}
-          >
-            Submit
-          </button>
-          <button
-            type="button"
-           
-            class="btn btn-danger mb-3"
-            onClick={cancelHandler}
-            style={{marginLeft:"20%"}}
-          >
-            Cancel
-          </button>
+            <button
+              type="submit"
+              class="btn btn-primary mb-3"
+              disabled={postClicked}
+            >
+              Submit
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger mb-3"
+              onClick={cancelHandler}
+              style={{ marginLeft: "20%" }}
+            >
+              Cancel
+            </button>
           </div>
         </div>
       </form>

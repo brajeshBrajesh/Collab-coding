@@ -19,7 +19,8 @@ function imgUploadHandlerAndSaveInDatabase(
   cancelHandler,
   setPostClicked,
   setProgress,
-  setFileUrl
+  setFileUrl,
+  render
 ) {
   const storage = getStorage();
   const filePath = "notes/" + newPostRef.key + "." + fileExtension;
@@ -49,7 +50,9 @@ function imgUploadHandlerAndSaveInDatabase(
           setPostClicked,
 
           downloadURL,
-          filePath
+          filePath,
+          render,
+          setFileUrl
         );
       });
     }

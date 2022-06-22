@@ -16,7 +16,9 @@ function saveToDatabase(
   cancelHandler,
   setPostClicked,
   downloadURL,
-  filePath
+  filePath,
+  render,
+  setFileUrl
 ) {
   console.log("Save to databse");
   set(newPostRef, {
@@ -32,6 +34,8 @@ function saveToDatabase(
     setPostClicked(false);
     cancelHandler();
     navigate("/my-notes");
+    setFileUrl("");
+    render();
   });
 }
 
